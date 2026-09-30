@@ -1,0 +1,205 @@
+/* Category Slider: static image + title cards in a scrolling row. */
+
+.kmst-csl {
+	--kmst-csl-per: 5;
+	--kmst-csl-gap: 16px;
+	--kmst-csl-zoom: 1.08;
+	--kmst-csl-zoom-speed: 500ms;
+	--kmst-csl-arrow-size: 36px;
+	--kmst-csl-arrow-icon: 18px;
+	position: relative;
+}
+
+/* Heading row: title and subtitle on one side, arrows on the other */
+
+.kmst-csl-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	margin-bottom: 20px;
+}
+
+.kmst-csl-heading {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	min-width: 0;
+}
+
+.kmst-csl-heading-title {
+	margin: 0;
+	line-height: 1.2;
+}
+
+.kmst-csl-heading-sub {
+	display: block;
+	opacity: .75;
+}
+
+/* No heading: the arrows alone, placed by the alignment setting. */
+.kmst-csl--no-heading .kmst-csl-head {
+	justify-content: flex-start;
+}
+
+/* Arrows */
+
+.kmst-csl-nav {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex: none;
+}
+
+.kmst-csl-arrow {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--kmst-csl-arrow-size);
+	height: var(--kmst-csl-arrow-size);
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	cursor: pointer;
+	transition: color .2s ease, background-color .2s ease, opacity .2s ease;
+}
+
+.kmst-csl-arrow svg {
+	width: var(--kmst-csl-arrow-icon);
+	height: var(--kmst-csl-arrow-icon);
+	display: block;
+}
+
+/* In Arabic the row runs the other way, so the arrowheads flip too (the class is set by the script). */
+.kmst-csl--rtl .kmst-csl-arrow svg {
+	transform: scaleX(-1);
+}
+
+.kmst-csl-arrow[disabled] {
+	opacity: .35;
+	cursor: default;
+}
+
+/* Arrows on the sides, floating over the row. */
+
+.kmst-csl-nav--sides {
+	position: absolute;
+	inset-inline: 0;
+	top: 50%;
+	margin: 0;
+	transform: translateY(-50%);
+	justify-content: space-between;
+	pointer-events: none;
+	z-index: 2;
+}
+
+.kmst-csl-nav--sides .kmst-csl-arrow {
+	pointer-events: auto;
+	background-color: rgba(255, 255, 255, .9);
+	border-radius: 50%;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, .12);
+}
+
+.kmst-csl--arrows-sides .kmst-csl-viewport {
+	position: relative;
+}
+
+/* The scrolling row */
+
+.kmst-csl-track {
+	display: flex;
+	gap: var(--kmst-csl-gap);
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	-webkit-overflow-scrolling: touch;
+	outline: none;
+}
+
+.kmst-csl-track::-webkit-scrollbar {
+	display: none;
+}
+
+.kmst-csl-card {
+	flex: 0 0 calc((100% - (var(--kmst-csl-per) - 1) * var(--kmst-csl-gap)) / var(--kmst-csl-per));
+	scroll-snap-align: start;
+	display: block;
+	text-decoration: none;
+	color: inherit;
+}
+
+.kmst-csl-card:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 3px;
+}
+
+/* Image box: the zoom happens inside it, so the card keeps its size. */
+
+.kmst-csl-media {
+	display: block;
+	position: relative;
+	height: 330px;
+	overflow: hidden;
+	background-color: #f5f5f5;
+}
+
+.kmst-csl-media img {
+	width: 100%;
+	height: 100%;
+	display: block;
+	object-fit: contain;
+	transition: transform var(--kmst-csl-zoom-speed) ease;
+	will-change: transform;
+}
+
+.kmst-csl-card:hover .kmst-csl-media img,
+.kmst-csl-card:focus-visible .kmst-csl-media img {
+	transform: scale(var(--kmst-csl-zoom));
+}
+
+.kmst-csl-title {
+	display: block;
+	margin-top: 12px;
+	text-align: center;
+	transition: color .2s ease;
+}
+
+/* Dragging with the mouse */
+
+.kmst-csl--drag .kmst-csl-track {
+	cursor: grab;
+}
+
+.kmst-csl--drag .kmst-csl-track.is-dragging {
+	cursor: grabbing;
+	scroll-behavior: auto;
+	scroll-snap-type: none;
+	user-select: none;
+}
+
+.kmst-csl--drag .kmst-csl-track.is-dragging img {
+	pointer-events: none;
+}
+
+/* Phones: the heading and the arrows stack, so long titles keep their room. */
+
+@media (max-width: 767px) {
+	.kmst-csl--head-stack .kmst-csl-head {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.kmst-csl-track {
+		scroll-behavior: auto;
+	}
+
+	.kmst-csl-media img {
+		transition: none;
+	}
+}

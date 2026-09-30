@@ -1,0 +1,194 @@
+/* KM Storefront Builder: variation swatches */
+.kmvs-wrap {
+	--kmvs-circle: 34px;
+	--kmvs-box-height: 40px;
+	--kmvs-gap: 10px;
+	--kmvs-ink: #111;
+	--kmvs-line: #d9d9d9;
+	--kmvs-muted: #9a9a9a;
+	--kmvs-bg: #fff;
+	position: relative;
+	width: 100%;
+}
+
+.kmvs-wrap select.kmvs-select {
+	display: none !important;
+}
+
+.kmvs-swatches {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--kmvs-gap);
+	margin: 4px 0 8px;
+	padding: 0;
+}
+
+.kmvs-swatch {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	cursor: pointer;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	transition: box-shadow .15s ease, border-color .15s ease, background-color .15s ease, color .15s ease, opacity .15s ease;
+}
+
+.kmvs-swatch:focus {
+	outline: none;
+}
+
+.kmvs-swatch:focus-visible {
+	outline: 2px solid var(--kmvs-ink);
+	outline-offset: 3px;
+}
+
+/* ---- Color circles ---- */
+.kmvs-swatch--color {
+	width: var(--kmvs-circle);
+	height: var(--kmvs-circle);
+	border-radius: 50%;
+	padding: 3px;
+	background: var(--kmvs-bg);
+	box-shadow: 0 0 0 1px var(--kmvs-line);
+}
+
+.kmvs-swatch--color .kmvs-swatch__fill {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	font-size: 12px;
+	line-height: 1;
+	text-transform: uppercase;
+	color: #555;
+}
+
+.kmvs-swatch--color.is-light .kmvs-swatch__fill {
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .15);
+}
+
+.kmvs-swatch--color.is-unknown .kmvs-swatch__fill {
+	background: repeating-linear-gradient(45deg, #f1f1f1 0 4px, #e4e4e4 4px 8px);
+}
+
+.kmvs-swatch--color:hover {
+	box-shadow: 0 0 0 1px var(--kmvs-muted);
+}
+
+.kmvs-swatch--color.is-selected {
+	box-shadow: 0 0 0 2px var(--kmvs-ink);
+}
+
+/* ---- Label boxes ---- */
+.kmvs-swatch--label {
+	min-width: var(--kmvs-box-height);
+	height: var(--kmvs-box-height);
+	padding: 0 14px;
+	border: 1px solid var(--kmvs-line);
+	border-radius: 4px;
+	background: var(--kmvs-bg);
+	color: var(--kmvs-ink);
+	font-size: 14px;
+	line-height: 1;
+	white-space: nowrap;
+}
+
+.kmvs-swatch--label:hover {
+	border-color: var(--kmvs-ink);
+}
+
+.kmvs-swatch--label.is-selected {
+	border-color: var(--kmvs-ink);
+	background: var(--kmvs-ink);
+	color: #fff;
+}
+
+/* ---- Unavailable combinations ---- */
+.kmvs-swatch.is-disabled {
+	cursor: not-allowed;
+	opacity: .4;
+}
+
+.kmvs-swatch.is-disabled::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 8%;
+	right: 8%;
+	height: 1px;
+	background: var(--kmvs-ink);
+	transform: rotate(-45deg);
+	pointer-events: none;
+}
+
+.kmvs-swatch--label.is-disabled::after {
+	left: 0;
+	right: 0;
+	transform: rotate(-20deg);
+}
+
+.kmvs-swatch.is-disabled:hover {
+	border-color: var(--kmvs-line);
+	box-shadow: 0 0 0 1px var(--kmvs-line);
+}
+
+.kmvs-swatch--label.is-disabled:hover {
+	box-shadow: none;
+}
+
+/* ---- Tooltip ---- */
+.kmvs-tooltip {
+	position: absolute;
+	bottom: calc(100% + 8px);
+	left: 50%;
+	z-index: 20;
+	padding: 5px 8px;
+	border-radius: 3px;
+	background: var(--kmvs-ink);
+	color: #fff;
+	font-size: 12px;
+	line-height: 1.2;
+	white-space: nowrap;
+	opacity: 0;
+	visibility: hidden;
+	transform: translate(-50%, 4px);
+	transition: opacity .15s ease, transform .15s ease, visibility .15s;
+	pointer-events: none;
+}
+
+.kmvs-tooltip::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -4px;
+	border: 4px solid transparent;
+	border-top-color: var(--kmvs-ink);
+}
+
+.kmvs-swatch:hover .kmvs-tooltip,
+.kmvs-swatch:focus-visible .kmvs-tooltip {
+	opacity: 1;
+	visibility: visible;
+	transform: translate(-50%, 0);
+}
+
+@media (hover: none) {
+	.kmvs-tooltip {
+		display: none;
+	}
+}
+
+/* ---- Selected name next to the attribute label ---- */
+.kmvs-selected:not(:empty)::before {
+	content: ": ";
+}
+
+.kmvs-selected {
+	font-weight: 400;
+}

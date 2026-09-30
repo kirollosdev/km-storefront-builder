@@ -1,0 +1,13 @@
+# Packaged builds
+*.zip
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Dependencies and tooling
+node_modules/
+vendor/
+.phpcs.cache

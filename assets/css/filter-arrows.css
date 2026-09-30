@@ -1,0 +1,23 @@
+/* KM Storefront Builder: filter toggles as arrows. Open = up, collapsed (.widget-toggled) = down. */
+.widget-has-toggle > .widget-title::after,
+.widget-has-toggle > .widgettitle::after {
+	content: "" !important;
+	top: 50%;
+	box-sizing: border-box;
+	width: 8px;
+	height: 8px;
+	margin: -2px 4px 0;
+	padding: 0;
+	border: 0;
+	border-right: 1.5px solid currentColor;
+	border-bottom: 1.5px solid currentColor;
+	font-family: inherit;
+	transform: translateY(-50%) rotate(-135deg);
+	transition: transform .2s ease-out;
+}
+
+.widget-has-toggle.widget-toggled > .widget-title::after,
+.widget-has-toggle.widget-toggled > .widgettitle::after {
+	margin-top: -6px;
+	transform: translateY(-50%) rotate(45deg);
+}

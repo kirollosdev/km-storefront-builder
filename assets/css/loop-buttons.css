@@ -1,0 +1,515 @@
+/* KM Storefront Builder: size picker for product card "Add to cart" */
+.kmst-lb-picker {
+	--kmst-lb-ink: #111;
+	--kmst-lb-muted: #8a8a8a;
+	--kmst-lb-line: #e3e3e3;
+	--kmst-lb-bg: #fff;
+	--kmst-lb-arrow: 50%;
+	position: absolute;
+	z-index: 100002;
+	width: 260px;
+	padding: 14px;
+	border: 1px solid var(--kmst-lb-line);
+	background: var(--kmst-lb-bg);
+	box-shadow: 0 12px 32px rgba(0, 0, 0, .12);
+	color: var(--kmst-lb-ink);
+	font-size: 14px;
+	line-height: 1.4;
+	animation: kmst-lb-pop .16s ease-out;
+}
+
+.kmst-lb-picker[hidden],
+.kmst-lb-backdrop[hidden] {
+	display: none;
+}
+
+/* Little arrow pointing at the button */
+.kmst-lb-picker::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: var(--kmst-lb-arrow);
+	width: 10px;
+	height: 10px;
+	margin: -5px 0 0 -5px;
+	border-right: 1px solid var(--kmst-lb-line);
+	border-bottom: 1px solid var(--kmst-lb-line);
+	background: var(--kmst-lb-bg);
+	transform: rotate(45deg);
+}
+
+.kmst-lb-picker.is-below::after {
+	top: 0;
+	border: 0;
+	border-top: 1px solid var(--kmst-lb-line);
+	border-left: 1px solid var(--kmst-lb-line);
+}
+
+.kmst-lb-picker button {
+	margin: 0;
+	border-radius: 0;
+	box-shadow: none;
+	font: inherit;
+	letter-spacing: inherit;
+	text-transform: none;
+	cursor: pointer;
+}
+
+.kmst-lb-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	font-weight: 600;
+}
+
+.kmst-lb-picker .kmst-lb-close {
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: var(--kmst-lb-ink);
+	font-size: 22px;
+	line-height: 1;
+}
+
+.kmst-lb-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+	gap: 8px;
+}
+
+.kmst-lb-picker .kmst-lb-size {
+	position: relative;
+	min-height: 40px;
+	padding: 4px 6px;
+	border: 1px solid var(--kmst-lb-line);
+	background: var(--kmst-lb-bg);
+	color: var(--kmst-lb-ink);
+	font-size: 14px;
+	transition: border-color .15s ease, background-color .15s ease, color .15s ease;
+}
+
+.kmst-lb-picker .kmst-lb-size:hover:not([disabled]),
+.kmst-lb-picker .kmst-lb-size:focus-visible {
+	border-color: var(--kmst-lb-ink);
+	outline: none;
+}
+
+.kmst-lb-picker .kmst-lb-size.is-loading,
+.kmst-lb-picker .kmst-lb-size.is-added {
+	border-color: var(--kmst-lb-ink);
+	background: var(--kmst-lb-ink);
+	color: #fff;
+}
+
+.kmst-lb-picker .kmst-lb-size.is-loading {
+	color: transparent;
+}
+
+.kmst-lb-picker .kmst-lb-size.is-loading::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 14px;
+	height: 14px;
+	margin: -7px 0 0 -7px;
+	border: 2px solid rgba(255, 255, 255, .4);
+	border-top-color: #fff;
+	border-radius: 50%;
+	animation: kmst-lb-spin .7s linear infinite;
+}
+
+.kmst-lb-picker .kmst-lb-size[disabled] {
+	color: var(--kmst-lb-muted);
+	cursor: not-allowed;
+	background:
+		linear-gradient(to top right, transparent calc(50% - .5px), var(--kmst-lb-line) calc(50% - .5px), var(--kmst-lb-line) calc(50% + .5px), transparent calc(50% + .5px));
+}
+
+.kmst-lb-picker.is-busy .kmst-lb-size:not(.is-loading) {
+	opacity: .5;
+}
+
+.kmst-lb-status:not(:empty) {
+	margin-top: 10px;
+	font-size: 13px;
+}
+
+.kmst-lb-picker.is-done .kmst-lb-status {
+	color: #1e7b34;
+}
+
+.kmst-lb-picker.is-error .kmst-lb-status {
+	color: #b3261e;
+}
+
+.kmst-lb-status a {
+	color: inherit;
+	text-decoration: underline;
+}
+
+/* ---- Phones: bottom sheet ---- */
+.kmst-lb-backdrop {
+	position: fixed;
+	inset: 0;
+	z-index: 100001;
+	background: rgba(0, 0, 0, .4);
+	animation: kmst-lb-fade .2s ease;
+}
+
+.kmst-lb-picker.is-sheet {
+	position: fixed;
+	top: auto !important;
+	right: 0;
+	bottom: 0;
+	left: 0 !important;
+	width: auto;
+	padding: 18px 20px calc(20px + env(safe-area-inset-bottom));
+	border: 0;
+	border-radius: 16px 16px 0 0;
+	box-shadow: 0 -10px 40px rgba(0, 0, 0, .16);
+	animation: kmst-lb-up .26s cubic-bezier(.2, .8, .2, 1);
+}
+
+.kmst-lb-picker.is-sheet::after {
+	display: none;
+}
+
+.kmst-lb-picker.is-sheet::before {
+	content: "";
+	position: absolute;
+	top: 7px;
+	left: 50%;
+	width: 36px;
+	height: 4px;
+	margin-left: -18px;
+	border-radius: 2px;
+	background: var(--kmst-lb-line);
+}
+
+.kmst-lb-picker.is-sheet .kmst-lb-head {
+	margin-bottom: 14px;
+	font-size: 17px;
+}
+
+.kmst-lb-picker.is-sheet .kmst-lb-close {
+	width: 44px;
+	height: 44px;
+	margin-inline-end: -12px;
+	font-size: 28px;
+}
+
+.kmst-lb-picker.is-sheet .kmst-lb-grid {
+	grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+	gap: 10px;
+}
+
+.kmst-lb-picker.is-sheet .kmst-lb-size {
+	min-height: 50px;
+	font-size: 15px;
+}
+
+html.kmst-lb-locked,
+html.kmst-lb-locked body {
+	overflow: hidden;
+}
+
+@keyframes kmst-lb-pop {
+	from { opacity: 0; transform: translateY(4px); }
+	to { opacity: 1; transform: none; }
+}
+
+@keyframes kmst-lb-up {
+	from { transform: translateY(100%); }
+	to { transform: none; }
+}
+
+@keyframes kmst-lb-fade {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes kmst-lb-spin {
+	to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.kmst-lb-picker,
+	.kmst-lb-backdrop {
+		animation: none !important;
+	}
+}
+
+/* ================================================================== */
+/* Card button as a bar inside the product image (XStore product grid) */
+/* ================================================================== */
+:root {
+	--kmst-lb-eye: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1.5 12S5.5 4.5 12 4.5 22.5 12 22.5 12 18.5 19.5 12 19.5 1.5 12 1.5 12z'/%3E%3Ccircle cx='12' cy='12' r='3.2'/%3E%3C/svg%3E");
+}
+
+/* XStore's own black "Quick View" bar is replaced by ours. */
+.etheme-product-grid-image footer:has(.footer-inner a.kmst-lb) .top-footer {
+	display: none !important;
+}
+
+/* Centered button that fits its text. Colors: --kmst-lb-bar-bg, --kmst-lb-bar-color, --kmst-lb-bar-border (+ -hover variants). */
+.etheme-product-grid-image footer .footer-inner a.kmst-lb {
+	position: absolute !important;
+	top: auto !important;
+	right: 0 !important;
+	bottom: 12px !important;
+	left: 0 !important;
+	z-index: 3;
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	width: fit-content !important;
+	max-width: calc(100% - 16px);
+	height: auto !important;
+	min-height: 40px;
+	margin: 0 auto !important;
+	padding: 0 22px !important;
+	border: var(--kmst-lb-bar-border-width, 0) solid var(--kmst-lb-bar-border, var(--e-global-color-primary, #111)) !important;
+	border-radius: var(--kmst-lb-bar-radius, 10px) !important;
+	background: var(--kmst-lb-bar-bg, #fff) !important;
+	color: var(--kmst-lb-bar-color, #111) !important;
+	box-shadow: none !important;
+	opacity: 1 !important;
+	visibility: visible !important;
+	transform: none !important;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1;
+	letter-spacing: .02em;
+	text-transform: none;
+	white-space: nowrap;
+	transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+
+.etheme-product-grid-image footer .footer-inner a.kmst-lb:hover,
+.etheme-product-grid-image footer .footer-inner a.kmst-lb:focus-visible {
+	border-color: var(--kmst-lb-bar-border-hover, var(--e-global-color-primary, #111)) !important;
+	background: var(--kmst-lb-bar-bg-hover, var(--e-global-color-primary, #111)) !important;
+	color: var(--kmst-lb-bar-color-hover, #fff) !important;
+}
+
+.etheme-product-grid-image footer .footer-inner a.kmst-lb::after {
+	content: attr(data-kmst-text);
+	font-size: var(--kmst-lb-bar-font-size, 14px);
+}
+
+/* Any text the theme or WooCommerce printed inside the button would repeat the label; the label comes from ::after.
+   Spacing uses margins instead of gap, so an invisible leftover text node adds no extra space. */
+.etheme-product-grid-image footer .footer-inner a.kmst-lb {
+	gap: 0 !important;
+	font-size: 0 !important;
+}
+
+/* The space sits on our own label (theme rules can reset margins on the icon itself). */
+.etheme-product-grid-image footer .footer-inner a.kmst-lb::after {
+	margin-inline-start: var(--kmst-lb-bar-icon-gap, 8px);
+}
+
+.etheme-product-grid-image footer .footer-inner a.kmst-lb > span:not([class*="kmst-"]) {
+	display: none !important;
+}
+
+/* XStore colors footer icons directly (.footer-inner svg { color: ... }); make the bag icon follow the button text. */
+.etheme-product-grid-image footer .footer-inner a.kmst-lb svg {
+	flex-shrink: 0;
+	width: 16px;
+	height: 16px;
+}
+
+.etheme-product-grid-image footer .footer-inner a.kmst-lb svg,
+.etheme-product-grid-image footer .footer-inner a.kmst-lb svg * {
+	color: inherit !important;
+	fill: currentColor !important;
+}
+
+.etheme-product-grid-image footer .footer-inner a.kmst-lb--quickview svg {
+	display: none;
+}
+
+/* XStore uses ::before on these icons for a hover highlight; take it over for the eye icon, drop it elsewhere. */
+.etheme-product-grid-image footer .footer-inner a.kmst-lb:not(.kmst-lb--quickview)::before {
+	display: none !important;
+}
+
+.etheme-product-grid-image footer .footer-inner a.kmst-lb--quickview::before {
+	content: "";
+	position: static !important;
+	display: block !important;
+	flex-shrink: 0;
+	opacity: 1 !important;
+	visibility: visible !important;
+	border-radius: 0;
+	width: 18px;
+	height: 18px;
+	background: currentColor;
+	-webkit-mask: var(--kmst-lb-eye) center / contain no-repeat;
+	mask: var(--kmst-lb-eye) center / contain no-repeat;
+}
+
+/* WooCommerce's "View cart" link after an AJAX add would break the bar layout. */
+.etheme-product-grid-image footer .footer-inner a.kmst-lb ~ .added_to_cart {
+	display: none !important;
+}
+
+/* The same button under the price is now redundant. */
+.etheme-product-grid-content a.kmst-lb {
+	display: none !important;
+}
+
+/*
+ * Show the bar without hover: always on touch screens, and everywhere with the "Always visible" setting.
+ * The hover layer itself is transparent and click-through; its other icons (wishlist) still wait for hover.
+ */
+body.kmst-lb-always .etheme-product-grid-item .etheme-product-grid-image footer:has(.footer-inner a.kmst-lb) {
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+@media (hover: none) {
+	.etheme-product-grid-item .etheme-product-grid-image footer:has(.footer-inner a.kmst-lb) {
+		opacity: 1 !important;
+		visibility: visible !important;
+	}
+}
+
+@media (max-width: 767px) {
+	.etheme-product-grid-image footer .footer-inner a.kmst-lb {
+		bottom: 8px !important;
+		max-width: calc(100% - 12px);
+		min-height: 36px;
+		padding: 0 14px !important;
+		--kmst-lb-bar-icon-gap: 6px;
+		--kmst-lb-bar-font-size: 13px;
+	}
+}
+
+/* ================================================================== */
+/* Card color swatches                                                */
+/* ================================================================== */
+.kmst-cs {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+/* Inside the image, just above the button. Always visible. */
+.kmst-cs--inside {
+	position: absolute;
+	right: 8px;
+	bottom: 64px;
+	left: 8px;
+	z-index: 4;
+	pointer-events: none;
+}
+
+.kmst-cs--inside > * {
+	pointer-events: auto;
+}
+
+/* Below the image, above the category and title. */
+.kmst-cs--below {
+	margin: 12px 0 4px;
+}
+
+.kmst-cs .kmst-cs-dot {
+	position: relative;
+	flex: none;
+	width: 20px;
+	height: 20px;
+	min-width: 0;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background-color: #ddd;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, .14);
+	cursor: pointer;
+	transition: box-shadow .15s ease, transform .15s ease;
+}
+
+.kmst-cs--inside .kmst-cs-dot {
+	box-shadow: 0 0 0 2px #fff, 0 1px 4px rgba(0, 0, 0, .25);
+}
+
+.kmst-cs .kmst-cs-dot:hover {
+	transform: scale(1.12);
+}
+
+.kmst-cs .kmst-cs-dot.is-selected,
+.kmst-cs--inside .kmst-cs-dot.is-selected {
+	box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--e-global-color-primary, #111);
+}
+
+.kmst-cs .kmst-cs-dot:focus-visible {
+	outline: 2px solid var(--e-global-color-primary, #111);
+	outline-offset: 3px;
+}
+
+.kmst-cs .kmst-cs-dot.is-unknown {
+	background: repeating-linear-gradient(45deg, #eee 0 3px, #d6d6d6 3px 6px);
+}
+
+.kmst-cs .kmst-cs-dot.is-out::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -2px;
+	right: -2px;
+	height: 1.5px;
+	background: #fff;
+	box-shadow: 0 0 0 .5px rgba(0, 0, 0, .35);
+	transform: rotate(-45deg);
+}
+
+.kmst-cs .kmst-cs-more {
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 20px;
+	color: #111;
+	text-decoration: none;
+}
+
+.kmst-cs--inside .kmst-cs-more {
+	padding: 0 7px;
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+}
+
+/* Desktop with the button shown on hover: sit lower while the button is hidden. */
+@media (hover: hover) {
+	.kmst-cs--inside {
+		transition: bottom .2s ease;
+	}
+
+	body:not(.kmst-lb-always) .etheme-product-grid-item:not(:hover) .kmst-cs--inside {
+		bottom: 14px;
+	}
+}
+
+@media (max-width: 767px) {
+	.kmst-cs {
+		gap: 7px;
+	}
+
+	.kmst-cs--inside {
+		bottom: 54px;
+	}
+
+	.kmst-cs .kmst-cs-dot {
+		width: 18px;
+		height: 18px;
+	}
+}

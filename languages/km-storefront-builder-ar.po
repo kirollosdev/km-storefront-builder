@@ -1,0 +1,593 @@
+# Arabic translation of KM Storefront Builder.
+# Kirollos Magdy, https://kirollosmagdy.com
+msgid ""
+msgstr ""
+"Project-Id-Version: KM Storefront Builder\n"
+"Last-Translator: Kirollos Magdy <https://kirollosmagdy.com>\n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+"X-Domain: km-storefront-builder\n"
+
+#: includes/class-kmst-loop-buttons.php:50
+msgid "Select %s"
+msgstr "اختر %s"
+
+#: includes/class-kmst-loop-buttons.php:51
+msgid "Added to cart"
+msgstr "تمت الإضافة إلى السلة"
+
+#: includes/class-kmst-loop-buttons.php:52
+msgid "Sold out"
+msgstr "نفدت الكمية"
+
+#: includes/class-kmst-loop-buttons.php:53 includes/class-kmst-loop-buttons.php:506
+msgid "Could not add to cart. Please try again."
+msgstr "تعذرت الإضافة إلى السلة. حاول مرة أخرى."
+
+#: includes/class-kmst-loop-buttons.php:54
+msgid "View product"
+msgstr "عرض المنتج"
+
+#: includes/class-kmst-loop-buttons.php:55 includes/filter-bar/class-kmst-filter-bar.php:236 includes/filter-bar/class-kmst-filter-bar.php:654
+msgid "Close"
+msgstr "إغلاق"
+
+#: includes/class-kmst-loop-buttons.php:215 includes/class-kmst-loop-buttons.php:268
+msgid "Quick view"
+msgstr "نظرة سريعة"
+
+#: includes/class-kmst-loop-buttons.php:217 includes/class-kmst-loop-buttons.php:268
+msgid "Add to cart"
+msgstr "أضف إلى السلة"
+
+#: includes/class-kmst-loop-buttons.php:236
+msgid "Quick view “%s”"
+msgstr "نظرة سريعة على “%s”"
+
+#: includes/class-kmst-loop-buttons.php:239
+msgid "Add to cart: “%s”"
+msgstr "أضف إلى السلة: “%s”"
+
+#: includes/class-kmst-loop-buttons.php:474
+msgid "This size is not available."
+msgstr "هذا المقاس غير متوفر."
+
+#: includes/class-kmst-settings.php:40
+msgid "Store tools"
+msgstr "أدوات المتجر"
+
+#: includes/class-kmst-settings.php:58 km-storefront-builder.php:119
+msgid "KM Storefront Builder"
+msgstr ""
+
+#: includes/class-kmst-settings.php:63
+msgid "Variation swatches"
+msgstr ""
+
+#: includes/class-kmst-settings.php:64
+msgid "Color circles and label boxes instead of dropdowns on the single product page. Set a color for undetected names in Products > Attributes > Configure terms."
+msgstr ""
+
+#: includes/class-kmst-settings.php:70
+msgid "Hide Uncategorized"
+msgstr ""
+
+#: includes/class-kmst-settings.php:71
+msgid "Hide the default \"Uncategorized\" product category from shop filters and category lists"
+msgstr ""
+
+#: includes/class-kmst-settings.php:77
+msgid "Filter arrows"
+msgstr ""
+
+#: includes/class-kmst-settings.php:78
+msgid "Show up/down arrows instead of +/− on collapsible shop filters"
+msgstr ""
+
+#: includes/class-kmst-settings.php:84
+msgid "Product card buttons"
+msgstr ""
+
+#: includes/class-kmst-settings.php:85
+msgid "Replace \"Select options\": products with colors get \"Quick view\", products with only sizes get \"Add to cart\" with an in-place size picker"
+msgstr ""
+
+#: includes/class-kmst-settings.php:91
+msgid "Card button visibility"
+msgstr ""
+
+#: includes/class-kmst-settings.php:92
+msgid "Whether the Quick view / Add to cart bar on product images shows all the time or only when hovering. Touch screens always show it."
+msgstr ""
+
+#: includes/class-kmst-settings.php:98
+msgid "On hover"
+msgstr "عند المرور"
+
+#: includes/class-kmst-settings.php:99
+msgid "Always visible"
+msgstr "ظاهر دائمًا"
+
+#: includes/class-kmst-settings.php:103
+msgid "Card color swatches"
+msgstr ""
+
+#: includes/class-kmst-settings.php:104
+msgid "Color dots on product cards for products with a color option. Choosing a color switches the card photo to that color."
+msgstr ""
+
+#: includes/class-kmst-settings.php:110
+msgid "Inside the image, above the button"
+msgstr ""
+
+#: includes/class-kmst-settings.php:111
+msgid "Below the image"
+msgstr ""
+
+#: includes/class-kmst-settings.php:112
+msgid "Off"
+msgstr "إيقاف"
+
+#: includes/class-kmst-settings.php:116
+msgid "Card buttons on the homepage"
+msgstr ""
+
+#: includes/class-kmst-settings.php:117
+msgid "Show the Quick view / Add to cart buttons and card color swatches on the homepage too (off: the homepage keeps the theme's own product cards)"
+msgstr ""
+
+#: includes/class-kmst-settings.php:123
+msgid "Card hover photo"
+msgstr ""
+
+#: includes/class-kmst-settings.php:124
+msgid "On product cards, hovering slides in the product's next photo (first gallery image)"
+msgstr ""
+
+#: includes/class-kmst-settings.php:130
+msgid "Wishlist icon circle"
+msgstr ""
+
+#: includes/class-kmst-settings.php:131
+msgid "Show the wishlist heart on product cards on a white circle (70% opacity)"
+msgstr ""
+
+#: includes/class-kmst-settings.php:137
+msgid "Wishlist icon always visible"
+msgstr ""
+
+#: includes/class-kmst-settings.php:138
+msgid "Show the wishlist heart on product cards all the time. Off: it appears on hover, like the theme"
+msgstr ""
+
+#: includes/class-kmst-settings.php:144
+msgid "Rounded product labels"
+msgstr ""
+
+#: includes/class-kmst-settings.php:145
+msgid "Sale, New, Hot and other product labels get 10px rounded corners, like the card buttons"
+msgstr ""
+
+#: includes/class-kmst-settings.php:151
+msgid "Polylang shop languages"
+msgstr ""
+
+#: includes/class-kmst-settings.php:152
+msgid "With free Polylang: open the shop, product categories, tags and products under each language's URL (e.g. /ar/shop/) instead of redirecting to the default language, so Arabic templates, header and menus are used there. Switched off automatically when Polylang for WooCommerce is active."
+msgstr ""
+
+#: includes/class-kmst-settings.php:158
+msgid "Filter bar"
+msgstr ""
+
+#: includes/class-kmst-settings.php:159
+msgid "Enable the horizontal filter bar. Add the Horizontal Filters widget (Elementor > Product Archive) above the products, or use the [kkmst_filter_bar] shortcode. These settings apply to the shortcode; the widget has its own options."
+msgstr ""
+
+#: includes/class-kmst-settings.php:169
+msgid "Filter bar contents"
+msgstr ""
+
+#: includes/class-kmst-settings.php:174 includes/filter-bar/class-kmst-filter-bar-widget.php:165 includes/filter-bar/class-kmst-filter-bar.php:302
+msgid "Product Type"
+msgstr "نوع المنتج"
+
+#: includes/class-kmst-settings.php:175
+msgid "Category filter"
+msgstr ""
+
+#: includes/class-kmst-settings.php:181
+msgid "Attributes"
+msgstr ""
+
+#: includes/class-kmst-settings.php:182
+msgid "Leave empty to show every product attribute (new attributes appear automatically). Order follows Products > Attributes."
+msgstr ""
+
+#: includes/class-kmst-settings.php:191 includes/filter-bar/class-kmst-filter-bar-widget.php:126 includes/filter-bar/class-kmst-filter-bar-widget.php:165 includes/filter-bar/class-kmst-filter-bar.php:493
+msgid "Price"
+msgstr "السعر"
+
+#: includes/class-kmst-settings.php:192
+msgid "Price range filter"
+msgstr ""
+
+#: includes/class-kmst-settings.php:198 includes/filter-bar/class-kmst-filter-bar-widget.php:127 includes/filter-bar/class-kmst-filter-bar-widget.php:165 includes/filter-bar/class-kmst-filter-bar.php:436
+msgid "Rating"
+msgstr "التقييم"
+
+#: includes/class-kmst-settings.php:199
+msgid "Star rating filter (5 stars, 4 stars & up, ...)"
+msgstr ""
+
+#: includes/class-kmst-settings.php:205
+msgid "Right side"
+msgstr ""
+
+#: includes/class-kmst-settings.php:206 includes/filter-bar/class-kmst-filter-bar-widget.php:207 includes/filter-bar/class-kmst-filter-bar.php:540 includes/filter-bar/class-kmst-filter-bar.php:603
+msgid "Order by"
+msgstr "ترتيب حسب"
+
+#: includes/class-kmst-settings.php:213 includes/filter-bar/class-kmst-filter-bar-widget.php:208 includes/filter-bar/class-kmst-filter-bar.php:550 includes/filter-bar/class-kmst-filter-bar.php:608
+msgid "Share"
+msgstr "مشاركة"
+
+#: includes/class-kmst-settings.php:220
+msgid "View (grid columns)"
+msgstr ""
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:36
+msgid "Horizontal Filters"
+msgstr "فلاتر أفقية"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:114 includes/filter-bar/class-kmst-filter-bar-widget.php:606 includes/filter-bar/class-kmst-filter-bar.php:225
+msgid "Filters"
+msgstr "الفلاتر"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:120
+msgid "Filter"
+msgstr "فلتر"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:124
+msgid "Product Type (categories)"
+msgstr "نوع المنتج (التصنيفات)"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:125 includes/filter-bar/class-kmst-filter-bar-widget.php:134
+msgid "Attribute"
+msgstr "الخاصية"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:144 includes/filter-bar/class-kmst-filter-bar-widget.php:224
+msgid "Label"
+msgstr "العنوان"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:146
+msgid "Default label"
+msgstr "العنوان الافتراضي"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:147
+msgid "Leave empty for the default name."
+msgstr "اتركه فارغًا لاستخدام الاسم الافتراضي."
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:161
+msgid "Filters (drag to reorder)"
+msgstr "الفلاتر (اسحب لإعادة الترتيب)"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:172 includes/filter-bar/class-kmst-filter-bar-widget.php:681
+msgid "Selected filter chips"
+msgstr "الفلاتر المختارة"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:182
+msgid "Selected count on labels"
+msgstr "عدد المختار بجانب العنوان"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:183
+msgid "Shows \"Size (2)\" when two sizes are chosen."
+msgstr ""
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:192
+msgid "Open dropdowns on hover"
+msgstr "فتح القوائم عند المرور بالماوس"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:193
+msgid "Desktop only. Clicking still opens them, and a clicked dropdown stays open."
+msgstr ""
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:203
+msgid "Order by, Share, View"
+msgstr "الترتيب، المشاركة، العرض"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:209 includes/filter-bar/class-kmst-filter-bar.php:566 includes/filter-bar/class-kmst-filter-bar.php:612
+msgid "View"
+msgstr "العرض"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:235
+msgid "Texts"
+msgstr "النصوص"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:241
+msgid "Leave a field empty to use the default text (translated automatically on Arabic pages)."
+msgstr "اترك الحقل فارغًا لاستخدام النص الافتراضي (يُترجم تلقائيًا في الصفحات العربية)."
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:264
+msgid "Bar"
+msgstr "الشريط"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:272
+msgid "Space between filters"
+msgstr ""
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:285
+msgid "Minimum height"
+msgstr ""
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:295 includes/filter-bar/class-kmst-filter-bar-widget.php:399
+msgid "Padding"
+msgstr "الحشو الداخلي"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:311 includes/filter-bar/class-kmst-filter-bar-widget.php:457
+msgid "Background"
+msgstr "الخلفية"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:323
+msgid "Filter labels"
+msgstr "عناوين الفلاتر"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:341 includes/filter-bar/class-kmst-filter-bar-widget.php:527
+msgid "Normal"
+msgstr "عادي"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:342 includes/filter-bar/class-kmst-filter-bar-widget.php:528
+msgid "Hover"
+msgstr "عند المرور"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:343
+msgid "Open / active"
+msgstr "مفتوح / نشط"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:352 includes/filter-bar/class-kmst-filter-bar-widget.php:535 includes/filter-bar/class-kmst-filter-bar-widget.php:622 includes/filter-bar/class-kmst-filter-bar-widget.php:696
+msgid "Text color"
+msgstr "لون النص"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:360 includes/filter-bar/class-kmst-filter-bar-widget.php:543 includes/filter-bar/class-kmst-filter-bar-widget.php:630 includes/filter-bar/class-kmst-filter-bar-widget.php:704
+msgid "Background color"
+msgstr "لون الخلفية"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:368 includes/filter-bar/class-kmst-filter-bar-widget.php:449 includes/filter-bar/class-kmst-filter-bar-widget.php:551 includes/filter-bar/class-kmst-filter-bar-widget.php:638
+msgid "Border color"
+msgstr "لون الحدود"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:390 includes/filter-bar/class-kmst-filter-bar-widget.php:564 includes/filter-bar/class-kmst-filter-bar-widget.php:654 includes/filter-bar/class-kmst-filter-bar-widget.php:720
+msgid "Border radius"
+msgstr "استدارة الحواف"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:408
+msgid "Icon size"
+msgstr ""
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:418
+msgid "Space between text and icon"
+msgstr ""
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:432
+msgid "Dropdowns"
+msgstr "القوائم المنسدلة"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:440
+msgid "Accent color"
+msgstr ""
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:441
+msgid "Checked boxes, selected sizes, slider and Apply button."
+msgstr ""
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:465
+msgid "Width"
+msgstr "العرض"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:476
+msgid "Option typography"
+msgstr ""
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:483
+msgid "Option color"
+msgstr ""
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:494
+msgid "Clear / Apply buttons"
+msgstr "زرا المسح / التطبيق"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:509 includes/filter-bar/class-kmst-filter-bar.php:113
+msgid "Apply"
+msgstr "تطبيق"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:510 includes/filter-bar/class-kmst-filter-bar.php:114
+msgid "Clear"
+msgstr "مسح"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:574 includes/filter-bar/class-kmst-filter-bar-widget.php:664
+msgid "Height"
+msgstr "الارتفاع"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:588
+msgid "Phone toolbar"
+msgstr "شريط الموبايل"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:597
+msgid "Below 768px the bar becomes a Filter / Sort toolbar that opens bottom sheets. Switch Elementor to mobile view to preview it."
+msgstr ""
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:604
+msgid "Filter button label"
+msgstr "عنوان زر الفلتر"
+
+#: includes/filter-bar/class-kmst-filter-bar-widget.php:646
+msgid "Count badge color"
+msgstr ""
+
+#: includes/filter-bar/class-kmst-filter-bar.php:64 includes/filter-bar/class-kmst-filter-bar.php:121
+msgid "Link copied"
+msgstr "تم نسخ الرابط"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:113
+msgid "Apply button"
+msgstr "زر التطبيق"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:114
+msgid "Clear button"
+msgstr "زر المسح"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:115 includes/filter-bar/class-kmst-filter-bar.php:115
+msgid "Clear all"
+msgstr "مسح الكل"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:116
+msgid "Show results (phone)"
+msgstr "عرض النتائج (الموبايل)"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:116
+msgid "Show results"
+msgstr "عرض النتائج"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:117
+msgid "Price: Min"
+msgstr "السعر: من"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:117
+msgid "Min"
+msgstr "من"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:118
+msgid "Price: Max"
+msgstr "السعر: إلى"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:118
+msgid "Max"
+msgstr "إلى"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:119
+msgid "Rating: 5 stars"
+msgstr "التقييم: 5 نجوم"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:119
+msgid "5 stars"
+msgstr "5 نجوم"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:120
+msgid "Rating: & up"
+msgstr "التقييم: فأكثر"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:120
+msgid "& up"
+msgstr "فأكثر"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:121
+msgid "Share: link copied message"
+msgstr "مشاركة: رسالة نسخ الرابط"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:122
+msgid "Sort: default"
+msgstr "الترتيب: الافتراضي"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:122
+msgid "Default sorting"
+msgstr "الترتيب الافتراضي"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:123
+msgid "Sort: popularity"
+msgstr "الترتيب: الأكثر شهرة"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:123
+msgid "Sort by popularity"
+msgstr "الأكثر شهرة"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:124
+msgid "Sort: average rating"
+msgstr "الترتيب: الأعلى تقييمًا"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:124
+msgid "Sort by average rating"
+msgstr "الأعلى تقييمًا"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:125
+msgid "Sort: latest"
+msgstr "الترتيب: الأحدث"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:125
+msgid "Sort by latest"
+msgstr "الأحدث"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:126
+msgid "Sort: price low to high"
+msgstr "الترتيب: السعر من الأقل للأعلى"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:126
+msgid "Sort by price: low to high"
+msgstr "السعر: من الأقل للأعلى"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:127
+msgid "Sort: price high to low"
+msgstr "الترتيب: السعر من الأعلى للأقل"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:127
+msgid "Sort by price: high to low"
+msgstr "السعر: من الأعلى للأقل"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:558
+msgid "%d columns"
+msgstr "%d أعمدة"
+
+#: includes/swatches/class-kmst-swatches-admin.php:81 includes/swatches/class-kmst-swatches-admin.php:97
+msgid "Swatch color"
+msgstr "لون العينة"
+
+#: includes/swatches/class-kmst-swatches-admin.php:83 includes/swatches/class-kmst-swatches-admin.php:101
+msgid "Optional. Leave empty to detect the color from the term name."
+msgstr ""
+
+#: includes/swatches/class-kmst-swatches-admin.php:140 includes/swatches/class-kmst-swatches-admin.php:144
+msgid "Swatch"
+msgstr "العينة"
+
+#: includes/swatches/class-kmst-swatches-admin.php:173
+msgid "auto"
+msgstr "تلقائي"
+
+#: includes/swatches/class-kmst-swatches.php:198
+msgid "Choose an option"
+msgstr "اختر خيارًا"
+
+#: km-storefront-builder.php:61
+msgid "KM Storefront Builder needs WooCommerce to be active."
+msgstr ""
+
+#: km-storefront-builder.php:120
+msgid "please deactivate and delete these plugins, their features are now included here:"
+msgstr ""
+
+#: km-storefront-builder.php:151
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:411
+msgid "%d star & up"
+msgid_plural "%d stars & up"
+msgstr[0] "%d نجوم فأكثر"
+msgstr[1] "نجمة واحدة فأكثر"
+msgstr[2] "نجمتان فأكثر"
+msgstr[3] "%d نجوم فأكثر"
+msgstr[4] "%d نجمة فأكثر"
+msgstr[5] "%d نجمة فأكثر"
+
+#: includes/filter-bar/class-kmst-filter-bar.php:615
+msgid "%d column"
+msgid_plural "%d columns"
+msgstr[0] "%d أعمدة"
+msgstr[1] "عمود واحد"
+msgstr[2] "عمودان"
+msgstr[3] "%d أعمدة"
+msgstr[4] "%d عمودًا"
+msgstr[5] "%d عمود"

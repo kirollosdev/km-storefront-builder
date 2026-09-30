@@ -1,0 +1,503 @@
+/*
+ * Arabic font: the rules using --kmst-ar-font only apply when a font is filled in under
+ * WooCommerce > Settings > Products > Store tools. With none set the variable is undefined and the
+ * browser drops those rules, so the theme's own font stays.
+ */
+/* KM Storefront Builder: product card extras */
+
+/* ---- Wishlist icon on a white circle (70% opacity) ---- */
+body.kmst-wishlist-circle .etheme-product-grid-item .footer-inner .xstore-wishlist {
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+	width: var(--kmst-wishlist-size, 36px) !important;
+	height: var(--kmst-wishlist-size, 36px) !important;
+	padding: 0 !important;
+	border-radius: 50% !important;
+	background-color: rgba(255, 255, 255, var(--kmst-wishlist-opacity, .7)) !important;
+	color: #111;
+	transition: background-color .2s ease;
+}
+
+body.kmst-wishlist-circle .etheme-product-grid-item .footer-inner .xstore-wishlist:hover {
+	background-color: rgba(255, 255, 255, .95) !important;
+}
+
+body.kmst-wishlist-circle .etheme-product-grid-item .footer-inner .xstore-wishlist .et-icon {
+	line-height: 1;
+}
+
+/* ---- Next photo slides in from the right on hover ---- */
+.etheme-product-grid-image > a.kmst-hover-swap > img.kmst-hover-img {
+	display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+	/* z-index 0 keeps both photos in their own layer, so the theme's hover icons (wishlist, Quick View) stay on top. */
+	.etheme-product-grid-image > a.kmst-hover-swap {
+		position: relative;
+		z-index: 0;
+		display: block;
+		overflow: hidden;
+	}
+
+	.etheme-product-grid-image > a.kmst-hover-swap > img {
+		transition: transform .55s cubic-bezier(.22, .61, .36, 1) !important;
+	}
+
+	.etheme-product-grid-image > a.kmst-hover-swap > img.kmst-hover-img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		display: block;
+		width: 100% !important;
+		max-width: none !important;
+		height: 100% !important;
+		margin: 0 !important;
+		object-fit: cover;
+		transform: translateX(100%) !important;
+	}
+
+	.etheme-product-grid-item:hover .etheme-product-grid-image > a.kmst-hover-swap > img:not(.kmst-hover-img) {
+		transform: translateX(-100%) !important;
+	}
+
+	.etheme-product-grid-item:hover .etheme-product-grid-image > a.kmst-hover-swap > img.kmst-hover-img {
+		transform: translateX(0) !important;
+	}
+
+	/* Keep the sale badge above both photos. */
+	.etheme-product-grid-image > a.kmst-hover-swap .sale-wrapper {
+		position: relative;
+		z-index: 2;
+	}
+
+	/* A color picked on the card shows that color's photo; don't slide it away. */
+	.etheme-product-grid-item.kmst-cs-picked .etheme-product-grid-image > a.kmst-hover-swap > img:not(.kmst-hover-img),
+	.etheme-product-grid-item.kmst-cs-picked .etheme-product-grid-image > a.kmst-hover-swap > img.kmst-hover-img {
+		transition: none !important;
+	}
+
+	.etheme-product-grid-item.kmst-cs-picked:hover .etheme-product-grid-image > a.kmst-hover-swap > img:not(.kmst-hover-img) {
+		transform: none !important;
+	}
+
+	.etheme-product-grid-item.kmst-cs-picked:hover .etheme-product-grid-image > a.kmst-hover-swap > img.kmst-hover-img {
+		transform: translateX(100%) !important;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.etheme-product-grid-image > a.kmst-hover-swap > img {
+		transition: none !important;
+	}
+}
+
+/* ---- Product labels (Sale, New, Hot...) with rounded corners like the card buttons ---- */
+body.kmst-rounded-badges .onsale:not(.type-circle) {
+	border-radius: var(--kmst-badge-radius, 10px) !important;
+}
+
+/* XStore lays the label out with flex, which drops the space in "Up to 15%"; put it back. */
+.onsale.with-percentage > span {
+	margin-inline-start: .3em;
+}
+
+/* ---- Wishlist heart visible without hovering ----
+   XStore hides the whole hover area until hover. Keep that area's own layer (white overlay, Quick View bar)
+   hidden, and make only the heart visible: a visible child shows even inside a hidden parent. */
+body.kmst-wishlist-always .etheme-product-grid-item .etheme-product-grid-image footer {
+	opacity: 1 !important;
+}
+
+body.kmst-wishlist-always .etheme-product-grid-item .etheme-product-grid-image footer .footer-inner .xstore-wishlist {
+	opacity: 1 !important;
+	visibility: visible !important;
+	transform: none !important;
+}
+
+/* Quick view window: no wishlist / compare buttons. */
+.et-quick-view-wrapper .single-wishlist,
+.et-quick-view-wrapper .single-compare {
+	display: none !important;
+}
+
+/* Quick view title in the Arabic font on Arabic pages (some themes use a heading font with no Arabic letters). */
+html[lang^="ar"] .et-quick-view-wrapper .product-name,
+html[lang^="ar"] .et-quick-view-wrapper .product-name a,
+html[lang^="ar"] .et-quick-view-wrapper .product_title {
+	font-family: var(--kmst-ar-font) !important;
+}
+
+/* Mini cart product names in the Arabic font, in every language. */
+.woocommerce-mini-cart-item .product-title,
+.woocommerce-mini-cart-item .product-title a,
+.mini_cart_item .product-title,
+.mini_cart_item .product-title a {
+	font-family: var(--kmst-ar-font) !important;
+}
+
+/* Empty cart / compare / wishlist heading: a heading font may have no Arabic letters, so Arabic
+   pages fell back to a system font. */
+html[lang^="ar"] .empty-cart-block h1,
+html[lang^="ar"] .empty-cart-block h2,
+html[lang^="ar"] .cart-empty h1,
+html[lang^="ar"] .wc-empty-cart-message h1 {
+	font-family: var(--kmst-ar-font) !important;
+}
+
+/* Live search results: the title takes the free width, the price stays on one line next to it. */
+.etheme-search-form .autocomplete-suggestion .etheme-search-form-item-link{display:flex;align-items:center;width:100%}
+.etheme-search-form .autocomplete-suggestion .etheme-search-form-item-link img{flex:0 0 auto}
+.etheme-search-form .autocomplete-suggestion .etheme-search-form-item-info{flex:1 1 auto;min-width:0;width:auto}
+.etheme-search-form .autocomplete-suggestion .etheme-search-form-item-title{word-break:normal;overflow-wrap:break-word;white-space:normal;line-height:1.4}
+.etheme-search-form .autocomplete-suggestion .etheme-search-form-item-price{flex:0 0 auto}
+.rtl .etheme-search-form .autocomplete-suggestion .etheme-search-form-item-info:not(:last-child){margin-right:0;margin-left:20px}
+/* Wider than the search box on desktop: grows toward the page (left on Arabic pages, right on English ones). */
+@media (min-width:768px){
+.etheme-search-form:not([type=popup]) .etheme-search-ajax-results{width:min(620px,92vw);min-width:100%;left:0;right:auto;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.rtl .etheme-search-form:not([type=popup]) .etheme-search-ajax-results{right:0;left:auto}
+.etheme-search-form:not([type=popup]) .etheme-search-ajax-results .autocomplete-suggestions{width:100%!important;max-height:min(70vh,560px)}
+}
+.etheme-search-form .autocomplete-suggestion .etheme-search-form-item-price{white-space:nowrap}
+/* Results heading: "Products" on one side, the count on the other, also on Arabic pages. */
+.etheme-search-form .etheme-search-form-title{justify-content:space-between;gap:10px}
+.rtl .etheme-search-form .etheme-search-form-title span{margin-left:0;margin-right:auto}
+/* Everything in the Arabic results box (heading, count, names, prices, "no results") in the Arabic font. */
+html[lang^="ar"] .etheme-search-ajax-results,
+html[lang^="ar"] .etheme-search-ajax-results *:not(i):not([class*="icon"]){font-family:var(--kmst-ar-font)!important}
+
+/* Wishlist side panel (and the mini cart panel): names, prices, buttons and the empty message in the Arabic font. */
+.et_b_wishlist-dropdown,
+.et_b_wishlist-dropdown *:not(i):not([class*="icon"]),
+.woocommerce-mini-wishlist-item,
+.woocommerce-mini-wishlist-item *:not(i):not([class*="icon"]),
+.empty-wishlist-block,
+.empty-wishlist-block *:not(i):not([class*="icon"]){
+	font-family: var(--kmst-ar-font) !important;
+}
+
+/* The product search box on the "no products found" page: rounded corners, button flush inside. */
+form.woocommerce-product-search{display:flex;align-items:stretch;border-radius:10px;overflow:hidden}
+form.woocommerce-product-search .search-field{flex:1 1 auto;min-width:0;border-radius:0;margin:0}
+form.woocommerce-product-search button{flex:0 0 auto;border-radius:0;margin:0}
+
+/* Quantity control: one rounded pill, big enough to tap, with the value centred and the +/- as quiet
+   buttons that light up on hover. size-sm is the small one inside the order review. Radius, height and
+   widths come from Store tools. */
+.quantity .quantity-wrapper,
+.quantity .quantity-wrapper.type-square,
+.et-quick-view-wrapper .quantity .quantity-wrapper,
+/* The quick view has no inner wrapper: the +/- sit straight inside .quantity. */
+.et-quick-view-wrapper .quantity,
+.quantity:has(> .minus),
+.quantity:has(> .plus){
+	display: inline-flex;
+	align-items: stretch;
+	height: var(--kmst-qty-height, 48px);
+	border: 1px solid var(--kmst-qty-border, #e2e2e2);
+	border-radius: var(--kmst-qty-radius, 10px) !important;
+	overflow: hidden;
+	background: #fff;
+	box-sizing: border-box;
+}
+.quantity .quantity-wrapper.size-sm{height: var(--kmst-qty-height-sm, 34px)}
+/* Order review cells are narrow, so the small one must never be wider than the space it has. */
+.quantity,
+.quantity .quantity-wrapper{max-width: 100%}
+.quantity .quantity-wrapper > *{border-radius: 0 !important}
+
+.quantity .quantity-wrapper .minus,
+.quantity .quantity-wrapper .plus,
+.et-quick-view-wrapper .quantity > .minus,
+.et-quick-view-wrapper .quantity > .plus,
+.quantity > .minus,
+.quantity > .plus{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--kmst-qty-button, 42px);
+	min-width: var(--kmst-qty-button, 42px);
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background: transparent;
+	color: #555;
+	cursor: pointer;
+	user-select: none;
+	transition: background-color .15s ease, color .15s ease;
+}
+.quantity .quantity-wrapper.size-sm .minus,
+.quantity .quantity-wrapper.size-sm .plus{
+	width: var(--kmst-qty-button-sm, 26px);
+	min-width: var(--kmst-qty-button-sm, 26px);
+	flex: 0 0 auto;
+}
+.quantity .quantity-wrapper .minus:hover,
+.quantity .quantity-wrapper .plus:hover,
+.quantity > .minus:hover,
+.quantity > .plus:hover{background: #f4f4f4; color: #111}
+/* The hidden label must not take part in the row. */
+.quantity > label.screen-reader-text{position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)}
+.quantity .quantity-wrapper .minus:active,
+.quantity .quantity-wrapper .plus:active{background: #ececec}
+.quantity .quantity-wrapper .minus.disabled,
+.quantity .quantity-wrapper .minus[disabled]{opacity: .35; cursor: default; background: transparent}
+
+/* The value: centred, no browser spinners, digits that keep their width while changing. */
+.quantity input.qty,
+.quantity .quantity-wrapper input.qty{
+	width: var(--kmst-qty-input, 48px);
+	min-width: var(--kmst-qty-input, 48px);
+	height: auto;
+	align-self: stretch;
+	margin: 0;
+	padding: 0 2px;
+	border: 0 !important;
+	border-left: 1px solid var(--kmst-qty-border, #e2e2e2) !important;
+	border-right: 1px solid var(--kmst-qty-border, #e2e2e2) !important;
+	border-radius: 0 !important;
+	background: transparent;
+	box-shadow: none !important;
+	text-align: center;
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+	line-height: normal;
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
+.quantity .quantity-wrapper.size-sm input.qty{
+	width: var(--kmst-qty-input-sm, 30px);
+	min-width: 0;
+	flex: 1 1 auto;
+	font-weight: 500;
+	font-size: .95em;
+}
+.quantity input.qty::-webkit-outer-spin-button,
+.quantity input.qty::-webkit-inner-spin-button{-webkit-appearance: none; margin: 0}
+.quantity input.qty:focus{outline: 0; box-shadow: none !important}
+.quantity .quantity-wrapper:focus-within{border-color: #b9b9b9}
+
+/* Currency symbol. The Riyal symbol is an uploaded SVG put in with inline styles, so the size, baseline
+   and spacing are forced here: same size everywhere, sitting on the digits' baseline with one gap on
+   whichever side it is, and never split from the amount across a line break. */
+.woocommerce-Price-amount,
+.woocommerce-Price-amount bdi{white-space: nowrap}
+.woocommerce-Price-currencySymbol{
+	display: inline-flex !important;
+	align-items: center;
+	vertical-align: baseline;
+	line-height: 1;
+}
+.woocommerce-Price-currencySymbol img{
+	height: .8em !important;
+	width: auto !important;
+	vertical-align: baseline !important;
+	margin: 0 !important;
+	display: inline-block;
+}
+.woocommerce-Price-currencySymbol:first-child{margin-inline-end: .28em !important}
+.woocommerce-Price-currencySymbol:last-child{margin-inline-start: .28em !important}
+
+/* Checkout and cart: rounded boxes, fields and buttons. The radius comes from Store tools
+   (--kmst-form-radius); 10px when nothing is set. */
+body.woocommerce-checkout .etheme-elementor-checkout-page-order-details-wrapper,
+body.woocommerce-checkout .etheme-elementor-checkout-page-order-details-inner,
+body.woocommerce-checkout .cart-order-details,
+body.woocommerce-checkout .order-review,
+body.woocommerce-checkout .e-checkout__order_review,
+body.woocommerce-checkout .woocommerce-checkout-review-order,
+body.woocommerce-checkout .checkout-order-review,
+body.woocommerce-checkout form.checkout .col2-set .woocommerce-billing-fields,
+body.woocommerce-cart .cart_totals,
+body.woocommerce-cart .cart-collaterals .cross-sells,
+body.woocommerce-cart .woocommerce-cart-form .shop_table{
+	border-radius: var(--kmst-form-radius, 10px);
+	overflow: hidden;
+}
+body.woocommerce-checkout input[type="text"],
+body.woocommerce-checkout input[type="email"],
+body.woocommerce-checkout input[type="tel"],
+body.woocommerce-checkout input[type="number"],
+body.woocommerce-checkout input[type="password"],
+body.woocommerce-checkout input[type="search"],
+body.woocommerce-checkout select,
+body.woocommerce-checkout textarea,
+body.woocommerce-checkout .select2-container .select2-selection,
+body.woocommerce-cart input[type="text"],
+body.woocommerce-cart input[type="email"],
+body.woocommerce-cart input[type="tel"],
+body.woocommerce-cart input[type="number"],
+body.woocommerce-cart select,
+body.woocommerce-cart textarea,
+body.woocommerce-cart .select2-container .select2-selection{
+	border-radius: var(--kmst-form-radius, 10px) !important;
+}
+body.woocommerce-checkout .button,
+body.woocommerce-checkout button.button,
+body.woocommerce-checkout #place_order,
+body.woocommerce-checkout .checkout-button,
+body.woocommerce-cart .button,
+body.woocommerce-cart button.button,
+body.woocommerce-cart .checkout-button,
+body.woocommerce-cart .wc-proceed-to-checkout a.button{
+	border-radius: var(--kmst-form-radius, 10px) !important;
+}
+/* The coupon field and its OK button sit together: round the pair, square the pieces. */
+body.woocommerce-cart .coupon,
+body.woocommerce-checkout .coupon{
+	border-radius: var(--kmst-form-radius, 10px);
+	overflow: hidden;
+}
+
+/* Wishlist page and wishlist panel buttons: same rounded corners as the rest of the store. */
+.xstore-wishlist-actions,
+.et-wishlist-holder .button,
+.et-wishlist-holder .btn,
+.et-wishlist-holder a.added_to_cart,
+.wishlist-page .button,
+.wishlist-page .btn,
+.et_b_wishlist-dropdown .btn,
+.et_b_wishlist-dropdown .button,
+.btn-view-wishlist,
+.empty-wishlist-block .btn,
+.empty-wishlist-block .button{
+	border-radius: var(--kmst-form-radius, 10px) !important;
+}
+
+/* Single product page and quick view: Add to cart, Buy now and the wishlist / compare links get the
+   same rounded corners as the cart and checkout. */
+.single-product .single_add_to_cart_button,
+.single-product .et-single-buy-now,
+.single-product form.cart .button,
+.single-product .et-quantity-buy-now-wrapper .button,
+.et-quick-view-wrapper .single_add_to_cart_button,
+.et-quick-view-wrapper .et-single-buy-now,
+.et-quick-view-wrapper form.cart .button,
+.et-quick-view-wrapper .button{
+	border-radius: var(--kmst-form-radius, 10px) !important;
+}
+
+/* Mini cart panel buttons (View cart / Checkout) and the wishlist panel button. */
+.widget_shopping_cart_content .buttons .button,
+.widget_shopping_cart_content .buttons .btn,
+.mini-cart-buttons .button,
+.mini-cart-buttons .btn,
+.et-mini-content .buttons .button,
+.et-mini-content .buttons .btn,
+.btn-view-cart,
+.btn-checkout,
+.btn-view-wishlist{
+	border-radius: var(--kmst-form-radius, 10px) !important;
+}
+
+/* A photo opened from inside the quick view: Elementor's lightbox sits at 9999 and the quick view popup
+   at 10002, so the photo opened behind the popup. Put the lightbox on top. */
+.dialog-widget.dialog-lightbox-widget,
+.elementor-lightbox{
+	z-index: 100000 !important;
+}
+
+/* Wishlist table: Add to cart, the quick view eye, the delete bin, "add all to cart" and the estimate
+   button all follow the same radius. */
+.xstore-wishlist-form .btn,
+.xstore-wishlist-form .button,
+.xstore-wishlist-form button,
+.xstore-wishlist-form .show-quickly,
+.xstore-wishlist-form .et-wishlist-delete,
+.xstore-wishlist-details .btn,
+.xstore-wishlist-details .button,
+.xstore-wishlist-apply-actions .btn,
+.xstore-wishlist-apply-actions .button,
+.et-wishlist-holder .show-quickly,
+.et-wishlist-holder .et-wishlist-delete,
+.et-wishlist-holder .add_to_cart_button,
+.et-call-popup.btn{
+	border-radius: var(--kmst-form-radius, 10px) !important;
+}
+
+/* Wishlist rows: hide the "Added on: date" line (the theme has no setting for it). */
+.xstore-wishlist-form .date-added,
+.xstore-wishlist-details .date-added,
+.et-wishlist-holder .date-added,
+.woocommerce-account .date-added{
+	display: none !important;
+}
+
+/* Cart page: the "clear shopping cart" link-button and the other action buttons beside it. */
+.actions-buttons .clear-cart,
+.actions-buttons .btn,
+.actions-buttons .button,
+a.clear-cart,
+body.woocommerce-cart .btn,
+body.woocommerce-cart .btn.bordered{
+	border-radius: var(--kmst-form-radius, 10px) !important;
+}
+
+/* Quick view is a compact panel: a slightly smaller quantity control than the product page. */
+.et-quick-view-wrapper .quantity,
+.et-quick-view-wrapper .quantity .quantity-wrapper{
+	--kmst-qty-height: 44px;
+	--kmst-qty-button: 34px;
+	--kmst-qty-input: 38px;
+}
+
+/* Mini cart. There .quantity-wrapper is the OUTER element, and it holds two .quantity children: the
+   control (the one with the +/- inside) and a plain "x 110,00" price beside it. So the control is
+   picked by "the .quantity that contains a minus", which leaves the price alone. The pill, the buttons
+   and the field itself are already styled by the rules further up. */
+.widget_shopping_cart_content,
+.et-mini-content{
+	--kmst-qty-height: 32px;
+	--kmst-qty-height-sm: 32px;
+	--kmst-qty-button: 28px;
+	--kmst-qty-button-sm: 28px;
+	--kmst-qty-input: 34px;
+	--kmst-qty-input-sm: 34px;
+}
+/* A wrapper that is only a container (mini cart) draws nothing itself; one that IS the control
+   (product page, order review) keeps its box. */
+.quantity-wrapper:not(:has(> .minus)){
+	border: 0 !important;
+	background: none !important;
+	padding: 0 !important;
+}
+.quantity-wrapper > .quantity:has(> .minus){
+	height: var(--kmst-qty-height-sm, 32px);
+	vertical-align: middle;
+}
+.quantity-wrapper > .quantity:has(> .minus) > input.qty{
+	width: var(--kmst-qty-input-sm, 34px);
+	min-width: var(--kmst-qty-input-sm, 34px);
+	flex: 0 0 auto;
+}
+/* The price line beside it is text. */
+.quantity-wrapper > span.quantity,
+.woocommerce-mini-cart-item span.quantity,
+.mini_cart_item span.quantity{
+	display: inline;
+	height: auto;
+	border: 0;
+	background: none;
+	border-radius: 0;
+	overflow: visible;
+	padding: 0;
+}
+
+/* The +/- icons are sized in em (the theme draws them as .7em SVGs), so they vanish wherever the
+   inherited font-size is tiny — which is what happened in the cart and the mini cart. Give the buttons
+   a font-size of their own. */
+.quantity .minus,
+.quantity .plus,
+.quantity-wrapper .minus,
+.quantity-wrapper .plus{
+	font-size: 1rem !important;
+	line-height: 1;
+}
+.quantity-wrapper.size-sm .minus,
+.quantity-wrapper.size-sm .plus,
+.quantity .quantity-wrapper.size-sm .minus,
+.quantity .quantity-wrapper.size-sm .plus{
+	font-size: .9rem !important;
+}
